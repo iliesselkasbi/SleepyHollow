@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
                 DriverManager.getConnection(
                     "jdbc:oracle:thin:@artemis.vsnet.gmu.edu:1521/vse18c.vsnet.gmu.edu",
                     "mmahtab",
-                    "oopsirse");
+                    System.getenv("DB_PASSWORD"));
 
             PreparedStatement ps =
                 conn.prepareStatement(

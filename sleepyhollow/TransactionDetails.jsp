@@ -11,7 +11,7 @@ try {
         DriverManager.getConnection(
             "jdbc:oracle:thin:@artemis.vsnet.gmu.edu:1521/vse18c.vsnet.gmu.edu",
             "user",
-            "pass");
+            System.getenv("DB_PASSWORD"));
 
     // To prevent SQL injection prepared statement is added.
     

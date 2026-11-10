@@ -12,7 +12,7 @@ try {
         DriverManager.getConnection(
             "jdbc:oracle:thin:@artemis.vsnet.gmu.edu:1521/vse18c.vsnet.gmu.edu",
             "user",
-            "pass");
+            System.getenv("DB_PASSWORD"));
 
     // Check if the destination SSN exists in the Employees table
     PreparedStatement checkPs = conn.prepareStatement(
