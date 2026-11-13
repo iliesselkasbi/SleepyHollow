@@ -1,0 +1,50 @@
+digraph SleepyHollowSchema {
+    graph [rankdir=LR, splines=ortho, nodesep=0.35, ranksep=0.9, bgcolor="white", pad=0.3];
+    node [shape=plain, fontname="Arial", fontsize=10];
+    edge [color="#64748b", arrowsize=0.65, penwidth=1.1];
+
+    Employees [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>Employees</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> ssn</TD></TR><TR><TD ALIGN="LEFT">name, dob, marital_status</TD></TR></TABLE>>];
+    Login [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#e0f2fe"><B>Login</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> username</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> ssn</TD></TR></TABLE>>];
+    Phones [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#e0f2fe"><B>Phones</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK/FK</B> ssn</TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> phone_num</TD></TR></TABLE>>];
+    Addresses [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#e0f2fe"><B>Addresses</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK/FK</B> ssn</TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> bldg#, street, city, state, zip</TD></TR></TABLE>>];
+    Customers [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>Customers</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> cust_id</TD></TR></TABLE>>];
+    Calls [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#f1f5f9"><B>Calls</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> c_id</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> cust_id, ssn</TD></TR></TABLE>>];
+    Products [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>Products</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> prod_id</TD></TR></TABLE>>];
+    Inventories [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>Inventories</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> inv_id</TD></TR></TABLE>>];
+    Quota_Offers [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>Quota_Offers</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> o_id</TD></TR></TABLE>>];
+    Awards [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#fef3c7"><B>Awards</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> award_id</TD></TR></TABLE>>];
+    Award_Centers [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#fef3c7"><B>Award_Centers</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> center_id</TD></TR></TABLE>>];
+    Emp_Sales [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>Emp_Sales</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> account_id, year</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> ssn</TD></TR></TABLE>>];
+    Emp_Month_Year [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#f1f5f9"><B>Emp_Month_Year</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> achievement_id</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> account_id, year</TD></TR></TABLE>>];
+    Transactions [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#f1f5f9"><B>Transactions</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> trans_id</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> ssn, account_id, year</TD></TR></TABLE>>];
+    Certificate [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#fef3c7"><B>Certificate</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> certificate_id</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> achievement_id</TD></TR></TABLE>>];
+    Txns_Prods [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#f1f5f9"><B>Txns_Prods</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK/FK</B> trans_id, prod_id</TD></TR></TABLE>>];
+    Transfer [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#f1f5f9"><B>Transfer</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK/FK</B> from_ssn, to_ssn</TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> transfer_date</TD></TR></TABLE>>];
+    GRANTED [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#fef3c7"><B>GRANTED</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK/FK</B> ssn, award_id</TD></TR><TR><TD ALIGN="LEFT"><B>PK</B> award_date</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> center_id, achievement_id</TD></TR></TABLE>>];
+    Contain [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#f1f5f9"><B>Contain</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK/FK</B> prod_id, inv_id</TD></TR><TR><TD ALIGN="LEFT"><B>FK</B> o_id</TD></TR></TABLE>>];
+    Txns_Prod_Inv [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#f1f5f9"><B>Txns_Prod_Inv</B></TD></TR><TR><TD ALIGN="LEFT"><B>PK/FK</B> prod_id, inv_id, trans_id</TD></TR></TABLE>>];
+
+    Employees -> Login [label="ssn"];
+    Employees -> Phones [label="ssn"];
+    Employees -> Addresses [label="ssn"];
+    Employees -> Calls [label="ssn"];
+    Customers -> Calls [label="cust_id"];
+    Employees -> Emp_Sales [label="ssn"];
+    Employees -> Transactions [label="ssn"];
+    Emp_Sales -> Emp_Month_Year [label="account_id, year"];
+    Emp_Sales -> Transactions [label="account_id, year"];
+    Emp_Month_Year -> Certificate [label="achievement_id"];
+    Transactions -> Txns_Prods [label="trans_id"];
+    Products -> Txns_Prods [label="prod_id"];
+    Employees -> Transfer [label="from_ssn / to_ssn"];
+    Employees -> GRANTED [label="ssn"];
+    Awards -> GRANTED [label="award_id"];
+    Award_Centers -> GRANTED [label="center_id"];
+    Emp_Month_Year -> GRANTED [label="achievement_id"];
+    Products -> Contain [label="prod_id"];
+    Inventories -> Contain [label="inv_id"];
+    Quota_Offers -> Contain [label="o_id"];
+    Products -> Txns_Prod_Inv [label="prod_id"];
+    Inventories -> Txns_Prod_Inv [label="inv_id"];
+    Transactions -> Txns_Prod_Inv [label="trans_id"];
+}
